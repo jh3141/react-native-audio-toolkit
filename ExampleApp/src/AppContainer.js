@@ -179,7 +179,7 @@ class AppContainer extends React.Component {
 
   render() {
     return (
-      <View>
+      <View style={{flex:1,justifyContent: "space-around"}}>
         <View>
           <Text style={styles.title}>
             Playback
