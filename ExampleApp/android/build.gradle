@@ -22,6 +22,7 @@ allprojects {
             url "$rootDir/../node_modules/react-native/android"
         }
     }
+    buildDir = "$rootDir/build/${project.name}"
 }
 subprojects {
     project.configurations.all {
