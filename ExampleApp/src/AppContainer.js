@@ -14,7 +14,7 @@ import {
   MediaStates
 } from 'react-native-audio-toolkit';
 
-let filename = 'test.mp4';
+let filename = 'https://archive.org/download/tsp1996-09-17.flac16/tsp1996-09-17d1t09.mp3';
 
 class AppContainer extends React.Component {
   constructor() {
