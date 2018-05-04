@@ -39,6 +39,8 @@ class Player extends EventEmitter {
     this._state = MediaStates.IDLE;
     this._volume = 1.0;
     this._pan = 0.0;
+    this._speed = 1.0;
+    this._pitch = 1.0;
     this._wakeLock = false;
     this._duration = -1;
     this._position = -1;
@@ -120,6 +122,8 @@ class Player extends EventEmitter {
           pan: this._pan,
           wakeLock: this._wakeLock,
           looping: this._looping,
+          speed: this._speed,
+          pitch: this._pitch
         },
         next,
       );
@@ -240,6 +244,16 @@ class Player extends EventEmitter {
     this._setIfInitialized({ looping: value });
   }
 
+  set pitch(value) {
+    this._pitch = value;
+    this._setIfInitialized({ pitch: value });
+  }
+
+  set speed(value) {
+    this._speed = value;
+    this._setIfInitialized({ speed: value });
+  }
+
   get currentTime() {
     let pos = -1;
 
@@ -265,7 +279,12 @@ class Player extends EventEmitter {
   get duration() {
     return this._duration;
   }
-
+  get speed () {
+    return this._speed;
+  }
+  get pitch () {
+    return this._pitch;
+  }
   get state() {
     return this._state;
   }

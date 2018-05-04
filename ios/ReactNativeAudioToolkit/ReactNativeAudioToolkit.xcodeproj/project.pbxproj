@@ -38,6 +38,7 @@
 		5E8FD9901D269F9900CF68CC /* AudioPlayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AudioPlayer.m; sourceTree = "<group>"; };
 		5E8FD9911D269F9900CF68CC /* AudioRecorder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AudioRecorder.h; sourceTree = "<group>"; };
 		5E8FD9921D269F9900CF68CC /* AudioRecorder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AudioRecorder.m; sourceTree = "<group>"; };
+		A146B45D2090775900474003 /* libReact.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libReact.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +57,7 @@
 			children = (
 				5E8FD9851D269F5D00CF68CC /* ReactNativeAudioToolkit */,
 				5E8FD9841D269F5D00CF68CC /* Products */,
+				A146B45B2090775900474003 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -82,6 +84,14 @@
 				5E21FB661D40CF5300A922AE /* ReactPlayerItem.m */,
 			);
 			path = ReactNativeAudioToolkit;
+			sourceTree = "<group>";
+		};
+		A146B45B2090775900474003 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				A146B45D2090775900474003 /* libReact.a */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -188,7 +198,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				HEADER_SEARCH_PATHS = "$(SRCROOT)/../../node_modules/react-native/**";
+				HEADER_SEARCH_PATHS = "$(SRCROOT)/../../../tackta-app/node_modules/react-native/React/**";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -227,7 +237,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				HEADER_SEARCH_PATHS = "$(SRCROOT)/../../node_modules/react-native/**";
+				HEADER_SEARCH_PATHS = "$(SRCROOT)/../../../tackta-app/node_modules/react-native/React/**";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
@@ -238,15 +248,22 @@
 		5E8FD98D1D269F5D00CF68CC /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = YES;
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SRCROOT)/../../../ios",
+					"${BUILT_PRODUCTS_DIR}",
+				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/../**",
 					"$(SRCROOT)/../../react-native/React/**",
 					"$(SRCROOT)/../../node_modules/react-native/React/**",
+					"$(SRCROOT)/../../../react-native/React/**",
 					"$(SRCROOT)/../../ExampleApp/node_modules/react-native/React/**",
 					"$(SRCROOT)/../../../../node_modules/react-native/React/**",
+					"$(SRCROOT)/../../../tackta-app/node_modules/react-native/React/**",
 				);
+				LIBRARY_SEARCH_PATHS = "$(SRCROOT)/../../../ios";
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -256,15 +273,22 @@
 		5E8FD98E1D269F5D00CF68CC /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = YES;
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SRCROOT)/../../../ios",
+					"${BUILT_PRODUCTS_DIR}",
+				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/../**",
 					"$(SRCROOT)/../../react-native/React/**",
 					"$(SRCROOT)/../../node_modules/react-native/React/**",
+					"$(SRCROOT)/../../../react-native/React/**",
 					"$(SRCROOT)/../../ExampleApp/node_modules/react-native/React/**",
 					"$(SRCROOT)/../../../../node_modules/react-native/React/**",
+					"$(SRCROOT)/../../../tackta-app/node_modules/react-native/React/**",
 				);
+				LIBRARY_SEARCH_PATHS = "$(SRCROOT)/../../../ios";
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;

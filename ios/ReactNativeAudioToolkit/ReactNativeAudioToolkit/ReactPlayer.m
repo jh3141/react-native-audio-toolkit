@@ -12,10 +12,11 @@
 
 - (instancetype)initWithURL:(NSURL *)URL {
     self = [super initWithURL:URL];
-    
+
     self.looping = NO;
     self.autoDestroy = YES;
-    
+    self.speed = 1.0f;
+
     return self;
 }
 
