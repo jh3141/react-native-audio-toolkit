@@ -22,4 +22,7 @@ dependencies {
     compile fileTree(dir: "libs", include: ["*.jar"])
     compile "com.android.support:appcompat-v7:23.0.1"
     compile "com.facebook.react:react-native:+"  // From node_modules
+    compile "com.google.android.exoplayer:exoplayer-core:2.8.1"
+    compile "com.google.android.exoplayer:extension-okhttp:2.8.1"
+    compile "com.google.android.exoplayer:extension-mediasession:2.8.1"
 }
