@@ -311,4 +311,11 @@ class Player extends EventEmitter {
   }
 }
 
+Player.precacheItem = (uri, options, callback) => {
+  if (Platform.OS === "android")
+    RCTAudioPlayer.precacheItem (uri, options, callback);
+  else
+    callback(false, "Cache is only supported on Android");
+};
+
 export default Player;
