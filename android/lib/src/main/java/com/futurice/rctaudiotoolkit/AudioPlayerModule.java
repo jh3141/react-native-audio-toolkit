@@ -51,7 +51,7 @@ import okhttp3.OkHttpClient;
 
 public class AudioPlayerModule extends ReactContextBaseJavaModule implements LifecycleEventListener, AudioManager.OnAudioFocusChangeListener {
     private static final String LOG_TAG = "AudioPlayerModule";
-    private static final long DEFAULT_MAX_CACHE_SIZE = 20*1024*1024L;
+    private static final long DEFAULT_MAX_CACHE_SIZE = 100*1024*1024L;
     private final OkHttpDataSourceFactory uncachedDataSourceFactory;
 
     Map<Integer, SimpleExoPlayer> playerPool = new HashMap<>();
@@ -79,14 +79,14 @@ public class AudioPlayerModule extends ReactContextBaseJavaModule implements Lif
                 new File(context.getExternalCacheDir(), "exoplayer-cache"),
                 cacheEvictor);
 
-        uncachedDataSourceFactory = new OkHttpDataSourceFactory(
+        dataSourceFactory = uncachedDataSourceFactory = new OkHttpDataSourceFactory(
                 new OkHttpClient(),
                 "Android.ExoPlayer",
                 null);
-        dataSourceFactory =
+        /*dataSourceFactory =
                 new CacheDataSourceFactory(
                         cache,
-                        uncachedDataSourceFactory);
+                        uncachedDataSourceFactory);*/
 
         handler = new Handler(reactContext.getMainLooper());    // handler is used to handle messages on the main thread
     }
@@ -132,6 +132,12 @@ public class AudioPlayerModule extends ReactContextBaseJavaModule implements Lif
         } catch (Cache.CacheException e) {
             Log.e(LOG_TAG, "Failed to release cache", e);
         }
+    }
+    @Override
+    public void onCatalystInstanceDestroy ()
+    {
+        // this method is called when the application is reloaded or restarted
+        onHostDestroy();
     }
 
     @Override
@@ -483,6 +489,7 @@ public class AudioPlayerModule extends ReactContextBaseJavaModule implements Lif
             if (options.hasKey("skipSilence") && !options.isNull("skipSilence")) {
                 params = new PlaybackParameters(params.speed, params.pitch, options.getBoolean("skipSilence"));
             }
+            player.setPlaybackParameters(params);
         }
 
         callback.invoke();
@@ -604,8 +611,9 @@ public class AudioPlayerModule extends ReactContextBaseJavaModule implements Lif
     @ReactMethod
     public void precacheItem(String path, ReadableMap options, final Callback callback)
     {
+        /*
         final Uri uri = uriFromPath(path);
-        new Thread (new Runnable () {
+        final Thread t = new Thread (new Runnable () {
             public void run() {
                 try {
                     CacheUtil.cache(
@@ -614,14 +622,17 @@ public class AudioPlayerModule extends ReactContextBaseJavaModule implements Lif
                             uncachedDataSourceFactory.createDataSource(),
                             null,
                             null);
+                    callback.invoke(true);
                 } catch (IOException e) {
                     callback.invoke(false, "Error: " + e.getMessage());
                 } catch (InterruptedException e) {
                     callback.invoke(false, "Download interrupted");
                 }
-                callback.invoke(true);
             }
-        }).start();
+        });
+        t.setPriority(Thread.MIN_PRIORITY);
+        t.start();
+        */
     }
 
     // Utils

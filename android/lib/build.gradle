@@ -1,7 +1,7 @@
 apply plugin: "com.android.library"
 
 android {
-    compileSdkVersion 24
+    compileSdkVersion 27
     buildToolsVersion "23.0.1"
 
     defaultConfig {
